@@ -1,0 +1,30 @@
+<launch>
+
+<node name="lab_map_server" pkg="map_server" type="map_server" args="$(find war_machine)/map.yaml" output="screen">
+    <remap from="map" to="lab_map"/>
+    <param name="frame_id" value="lab_map"/>
+</node>
+
+<arg name="robot_init_x" default="0"/>
+<arg name="robot_init_y" default="0"/>
+<arg name="robot_init_phi" default="0"/>
+
+<node pkg="amcl" type="amcl" name="lab_localization">
+        <remap from="scan" to="hsrb/base_scan" />
+        <remap from="map" to="lab_map" />
+
+        <param name="initial_pose_x" value="$(arg robot_init_x)"/>
+        <param name="initial_pose_y" value="$(arg robot_init_y)"/>
+        <param name="initial_pose_a" value="$(arg robot_init_phi)"/>
+         
+        <param name="odom_model_type" value="omni-corrected"/>
+        <param name="odom_alpha1" value="0.005"/>
+        <param name="odom_alpha2" value="0.005"/>
+        <param name="odom_alpha3" value="0.010"/>
+        <param name="odom_alpha4" value="0.005"/>
+        <param name="odom_alpha5" value="0.003"/>
+        <param name="update_min_d" value="0.01"/>
+        <param name="update_min_a" value="0.01"/>
+        <param name="tf_broadcast" value="false"/>
+</node>
+</launch>
