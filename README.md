@@ -4,7 +4,7 @@ University of Michigan code used for the first HSR Challenge 180815.
 Contact: Brent Griffin (griffb at umich dot edu)
 
 ## Execution
-Need to run: ``roslaunch hsr_war_machine amcl.launch``.
+Need to run: ``roslaunch hsr_war_machine amcl.launch``.<br />
 Need to have tensorflow sourced to run the challenge script: ``./heimdall.py``.
 
 __Video Demonstration:__ https://youtu.be/4s14FmhO03o
